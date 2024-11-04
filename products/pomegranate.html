@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Page - Agri Aura</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <style>
+        /* Common CSS for Agri Aura Order Page */
+
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        main:hover {
+            transform: translateY(-2px);
+        }
+
+        .order-container {
+            margin: 20px 0;
+        }
+
+        .image-container {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .image-container img {
+            max-width: 80%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.4s ease;
+        }
+
+        .image-container img:hover {
+            transform: scale(1.05);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        label {
+            margin: 4px 0; /* Reduced margin for labels */
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 6px; /* Reduced padding */
+            margin-bottom: 10px; /* Reduced margin */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: border 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        textarea:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        .booking-options {
+            margin-bottom: 15px;
+        }
+
+        .booking-options input {
+            margin-right: 5px;
+        }
+
+        .order-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 12px; /* Reduced padding */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            
+        }
+        a{
+            text-decoration: none;
+        }
+
+        .order-btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            main {
+                padding: 15px;
+            }
+
+            .order-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Order Page - Agri Aura</h1>
+    </header>
+    <main>
+        <div class="order-container">
+            <h2 id="product-name">Pomegranate</h2>
+            <div class="image-container">
+                <img id="product-image" src="https://i.ibb.co/GRXGgSh/pomegranate.jpg" alt="Pomegranate">
+            </div>
+            <p>Amount: <span id="product-amount">$0</span></p>
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" value="1" min="1" max="100">
+
+            <!-- Booking Options -->
+            <h3>Booking Options</h3>
+            <div class="booking-options">
+                <input type="radio" id="normal" name="booking" value="normal" checked>
+                <label for="normal">Normal</label>
+                <input type="radio" id="prebook" name="booking" value="prebook">
+                <label for="prebook">Pre-book</label>
+            </div>
+
+            <!-- Address Form -->
+            <h3>Delivery Address</h3>
+            <form id="address-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" placeholder="Your Name" required>
+                
+                <label for="address">Address:</label>
+                <textarea id="address" rows="2" placeholder="Delivery Address" required></textarea>
+                
+                <label for="contact">Contact Number:</label>
+                <input type="text" id="contact" placeholder="Please enter a 10-digit phone number" required pattern="^\d{10}$" title="Please enter a 10-digit phone number">
+                
+                <a href="/index.html" ><button type="button" class="order-btn">Place Order</button></a>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
