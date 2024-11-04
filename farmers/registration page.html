@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Registration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background : url('img1.jpg') no-repeat center center/cover;
+            color: #2f4f2f;
+            padding-top: 50px;
+             justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="text-center mb-4">Farmer Registration</h2>
+    <form id="registrationForm" onsubmit="sendOTP(event)">
+        <div class="mb-3">
+            <label for="farmerName" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="farmerName" required>
+        </div>
+        <div class="mb-3">
+            <label for="farmerEmail" class="form-label">Email</label>
+            <input type="email" class="form-control" id="farmerEmail" required>
+        </div>
+        <div class="mb-3">
+            <label for="farmerPhone" class="form-label">Phone Number</label>
+            <input type="tel" class="form-control" id="farmerPhone" required>
+        </div>
+        <div class="mb-3">
+            <label for="district" class="form-label">District</label>
+            <input type="text" class="form-control" id="district" required>
+        </div>
+        <div class="mb-3">
+            <label for="area" class="form-label">Area</label>
+            <input type="text" class="form-control" id="area" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Send OTP</button>
+    </form>
+    <div id="otpSection" style="display: none;" class="mt-4">
+        <h5 class="text-center">Enter OTP</h5>
+        <input type="text" id="otpInput" class="form-control mb-3" placeholder="Enter OTP" required>
+        <button class="btn btn-success w-100" onclick="verifyOTP()">Verify OTP</button>
+    </div>
+</div>
+
+<script>
+    function sendOTP(event) {
+        event.preventDefault();
+        alert('An OTP has been sent to your phone number.');
+        document.getElementById('otpSection').style.display = 'block'; // Show OTP input
+    }
+
+    function verifyOTP() {
+        const otp = document.getElementById('otpInput').value;
+        if (otp) {
+            // Save district and area to local storage
+            const district = document.getElementById('district').value;
+            const area = document.getElementById('area').value;
+            localStorage.setItem('district', district);
+            localStorage.setItem('area', area);
+            // Redirect to market details page
+            window.location.href = 'market-details.html';
+        } else {
+            alert('Please enter a valid OTP.');
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Products</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: url('')no-repeat center center/cover;
+            background-size: cover;
+            background-position: center;
+            color: #2f4f2f;
+            padding-top: 50px;
+        }
+        .container {
+            max-width: 90%;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+            margin: auto;
+        }
+        .product-card {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="text-center mb-4">Products Available</h2>
+    <div id="productList" class="row"></div>
+</div>
+
+<script>
+    const products = {
+        "Karur market": {
+            "Vegetables": [
+                { name: "Carrot", type: "Vegetable", price: "$2.00", image: "https://i.ibb.co/3CJFgtf/66650460ca5fb60957eaacd492d63f18.jpg" },
+                { name: "Cabbage", type: "Vegetable", price: "$1.80", image: "https://i.ibb.co/Kh7PwPn/b12a532fa575f03b3be647bdf5ae0192.jpg" },
+                { name: "Onion", type: "Vegetable", price: "$1.50", image: "https://i.ibb.co/Cz6S3Gn/onion.jpg" }
+            ],
+            "Fruits": [
+            { name: "mango", type: "Fruit", price: "$0.90", image: "https://i.ibb.co/64Rbcn7/mango.jpg" },
+                { name: "guava", type: "Fruit", price: "$2.50", image: "https://i.ibb.co/61Kd3fj/guava.jpg" },
+                { name: "Pears", type: "Fruit", price: "$3.00", image: "https://i.ibb.co/4RvdzNr/pears.jpg" }
+            ],
+            "Spices": [
+                { name: "coriander seeds", type: "Spice", price: "$0.70", image: "https://i.ibb.co/hgDSkbT/coriander-seeds.jpg" },
+                { name: "Fennel seeds", type: "Spice", price: "$0.80", image: "https://i.ibb.co/pjXV1xQ/fennel-seeds.jpg" },
+                { name: "Peppers", type: "Spice", price: "$0.60", image: "https://i.ibb.co/yssCJbc/pepper.jpg" }
+            ],
+            "Grains": [
+                { name: "wheat", type: "Grain", price: "$0.90", image: "https://i.ibb.co/QPjFrBs/wheat.webp" },
+                { name: "Foxtail", type: "Grain", price: "$1.50", image: "https://i.ibb.co/0GkRPjr/foxtail.jpg" },
+                { name: "rice", type: "Grain", price: "$1.20", image: "https://i.ibb.co/gyFg2MX/rice.jpg" }
+            ],
+           "Greens": [
+                { name: "Spinach", type: "Green", price: "$0.90", image: "https://i.ibb.co/rs4Hw64/spinach.jpg" },
+                { name: "Ponnanganni", type: "Green", price: "$1.50", image: "https://i.ibb.co/37dtLMq/ponnanganni.jpg" },
+                { name: "vallarai", type: "Green", price: "$1.20", image: "https://i.ibb.co/w0kvF4w/Vallarai.jpg" }
+            ]
+        },
+        "Vengamedu market": {
+            "Vegetables": [
+                { name: "Carrot", type: "Vegetable", price: "$1.20", image: "https://i.ibb.co/3CJFgtf/66650460ca5fb60957eaacd492d63f18.jpg" },
+                { name: "Cabbage", type: "Vegetable", price: "$1.80", image: "https://i.ibb.co/Kh7PwPn/b12a532fa575f03b3be647bdf5ae0192.jpg" },
+                { name: "Spinach", type: "Vegetable", price: "$1.50", image: "https://i.ibb.co/Cz6S3Gn/onion.jpg" }
+            ],
+            "Green": [
+                { name: "mango", type: "Fruit", price: "$0.90", image: "https://i.ibb.co/64Rbcn7/mango.jpg" },
+                { name: "guava", type: "Fruit", price: "$2.50", image: "https://i.ibb.co/61Kd3fj/guava.jpg" },
+                { name: "Pears", type: "Fruit", price: "$3.00", image: "https://i.ibb.co/4RvdzNr/pears.jpg" }
+            ],
+            "Spices": [
+                { name: "coriander seeds", type: "Spice", price: "$0.70", image: "https://i.ibb.co/hgDSkbT/coriander-seeds.jpg" },
+                { name: "Fennel seeds", type: "Spice", price: "$0.80", image: "https://i.ibb.co/pjXV1xQ/fennel-seeds.jpg" },
+                { name: "Peppers", type: "Spice", price: "$0.60", image: "https://i.ibb.co/yssCJbc/pepper.jpg" }
+            ],
+            "Grains": [
+                { name: "wheat", type: "Grain", price: "$0.90", image: "https://i.ibb.co/QPjFrBs/wheat.webp" },
+                { name: "Foxtail", type: "Grain", price: "$1.50", image: "https://i.ibb.co/0GkRPjr/foxtail.jpg" },
+                { name: "rice", type: "Grain", price: "$1.20", image: "https://i.ibb.co/gyFg2MX/rice.jpg" }
+            ],
+            "Greens": [
+                { name: "Spinach", type: "Green", price: "$0.90", image: "https://i.ibb.co/rs4Hw64/spinach.jpg" },
+                { name: "Ponnanganni", type: "Green", price: "$1.50", image: "https://i.ibb.co/37dtLMq/ponnanganni.jpg" },
+                { name: "vallarai", type: "Green", price: "$1.20", image: "https://i.ibb.co/w0kvF4w/Vallarai.jpg" }
+            ]
+        },
+        // Add more markets and their products here
+    "Velayuthayampalayam market": {
+            "Vegetables": [
+                { name: "Carrot", type: "Vegetable", price: "$1.20", image: "https://i.ibb.co/3CJFgtf/66650460ca5fb60957eaacd492d63f18.jpg" },
+                { name: "Cabbage", type: "Vegetable", price: "$1.80", image: "https://i.ibb.co/Kh7PwPn/b12a532fa575f03b3be647bdf5ae0192.jpg" },
+                { name: "Spinach", type: "Vegetable", price: "$1.50", image: "https://i.ibb.co/Cz6S3Gn/onion.jpg" }
+            ],
+            "Green": [
+                { name: "mango", type: "Fruit", price: "$0.90", image: "https://i.ibb.co/64Rbcn7/mango.jpg" },
+                { name: "guava", type: "Fruit", price: "$2.50", image: "https://i.ibb.co/61Kd3fj/guava.jpg" },
+                { name: "Pears", type: "Fruit", price: "$3.00", image: "https://i.ibb.co/4RvdzNr/pears.jpg" }
+            ],
+            "Spices": [
+                { name: "coriander seeds", type: "Spice", price: "$0.70", image: "https://i.ibb.co/hgDSkbT/coriander-seeds.jpg" },
+                { name: "Fennel seeds", type: "Spice", price: "$0.80", image: "https://i.ibb.co/pjXV1xQ/fennel-seeds.jpg" },
+                { name: "Peppers", type: "Spice", price: "$0.60", image: "https://i.ibb.co/yssCJbc/pepper.jpg" }
+            ],
+            "Grains": [
+                { name: "wheat", type: "Grain", price: "$0.90", image: "https://i.ibb.co/QPjFrBs/wheat.webp" },
+                { name: "Foxtail", type: "Grain", price: "$1.50", image: "https://i.ibb.co/0GkRPjr/foxtail.jpg" },
+                { name: "rice", type: "Grain", price: "$1.20", image: "https://i.ibb.co/gyFg2MX/rice.jpg" }
+            ],
+            "Greens": [
+                { name: "Spinach", type: "Green", price: "$0.90", image: "https://i.ibb.co/rs4Hw64/spinach.jpg" },
+                { name: "Ponnanganni", type: "Green", price: "$1.50", image: "https://i.ibb.co/37dtLMq/ponnanganni.jpg" },
+                { name: "vallarai", type: "Green", price: "$1.20", image: "https://i.ibb.co/w0kvF4w/Vallarai.jpg" }
+            ]
+        },
+        "Gandhigrammam market": {
+            "Vegetables": [
+                { name: "Carrot", type: "Vegetable", price: "$1.20", image: "https://i.ibb.co/3CJFgtf/66650460ca5fb60957eaacd492d63f18.jpg" },
+                { name: "Cabbage", type: "Vegetable", price: "$1.80", image: "https://i.ibb.co/Kh7PwPn/b12a532fa575f03b3be647bdf5ae0192.jpg" },
+                { name: "Spinach", type: "Vegetable", price: "$1.50", image: "https://i.ibb.co/Cz6S3Gn/onion.jpg" }
+            ],
+            "Green": [
+                { name: "mango", type: "Fruit", price: "$0.90", image: "https://i.ibb.co/64Rbcn7/mango.jpg" },
+                { name: "guava", type: "Fruit", price: "$2.50", image: "https://i.ibb.co/61Kd3fj/guava.jpg" },
+                { name: "Pears", type: "Fruit", price: "$3.00", image: "https://i.ibb.co/4RvdzNr/pears.jpg" }
+            ],
+            "Spices": [
+                { name: "coriander seeds", type: "Spice", price: "$0.70", image: "https://i.ibb.co/hgDSkbT/coriander-seeds.jpg" },
+                { name: "Fennel seeds", type: "Spice", price: "$0.80", image: "https://i.ibb.co/pjXV1xQ/fennel-seeds.jpg" },
+                { name: "Peppers", type: "Spice", price: "$0.60", image: "https://i.ibb.co/yssCJbc/pepper.jpg" }
+            ],
+            "Grains": [
+                { name: "wheat", type: "Grain", price: "$0.90", image: "https://i.ibb.co/QPjFrBs/wheat.webp" },
+                { name: "Foxtail", type: "Grain", price: "$1.50", image: "https://i.ibb.co/0GkRPjr/foxtail.jpg" },
+                { name: "rice", type: "Grain", price: "$1.20", image: "https://i.ibb.co/gyFg2MX/rice.jpg" }
+            ],
+            "Greens": [
+                { name: "Spinach", type: "Green", price: "$0.90", image: "https://i.ibb.co/rs4Hw64/spinach.jpg" },
+                { name: "Ponnanganni", type: "Green", price: "$1.50", image: "https://i.ibb.co/37dtLMq/ponnanganni.jpg" },
+                { name: "vallarai", type: "Green", price: "$1.20", image: "https://i.ibb.co/w0kvF4w/Vallarai.jpg" }
+            ]
+        },
+        "Pallapatti market": {
+            "Vegetables": [
+                { name: "Carrot", type: "Vegetable", price: "$1.20", image: "https://i.ibb.co/3CJFgtf/66650460ca5fb60957eaacd492d63f18.jpg" },
+                { name: "Cabbage", type: "Vegetable", price: "$1.80", image: "https://i.ibb.co/Kh7PwPn/b12a532fa575f03b3be647bdf5ae0192.jpg" },
+                { name: "Spinach", type: "Vegetable", price: "$1.50", image: "https://i.ibb.co/Cz6S3Gn/onion.jpg" }
+            ],
+            "Green": [
+                { name: "mango", type: "Fruit", price: "$0.90", image: "https://i.ibb.co/64Rbcn7/mango.jpg" },
+                { name: "guava", type: "Fruit", price: "$2.50", image: "https://i.ibb.co/61Kd3fj/guava.jpg" },
+                { name: "Pears", type: "Fruit", price: "$3.00", image: "https://i.ibb.co/4RvdzNr/pears.jpg" }
+            ],
+            "Spices": [
+                { name: "coriander seeds", type: "Spice", price: "$0.70", image: "https://i.ibb.co/hgDSkbT/coriander-seeds.jpg" },
+                { name: "Fennel seeds", type: "Spice", price: "$0.80", image: "https://i.ibb.co/pjXV1xQ/fennel-seeds.jpg" },
+                { name: "Peppers", type: "Spice", price: "$0.60", image: "https://i.ibb.co/yssCJbc/pepper.jpg" }
+            ],
+            "Grains": [
+                { name: "wheat", type: "Grain", price: "$0.90", image: "https://i.ibb.co/QPjFrBs/wheat.webp" },
+                { name: "Foxtail", type: "Grain", price: "$1.50", image: "https://i.ibb.co/0GkRPjr/foxtail.jpg" },
+                { name: "rice", type: "Grain", price: "$1.20", image: "https://i.ibb.co/gyFg2MX/rice.jpg" }
+            ],
+            "Greens": [
+                { name: "Spinach", type: "Green", price: "$0.90", image: "https://i.ibb.co/rs4Hw64/spinach.jpg" },
+                { name: "Ponnanganni", type: "Green", price: "$1.50", image: "https://i.ibb.co/37dtLMq/ponnanganni.jpg" },
+                { name: "vallarai", type: "Green", price: "$1.20", image: "https://i.ibb.co/w0kvF4w/Vallarai.jpg" }
+            ]
+        },
+        "kattuputhur market": {
+            "Vegetables": [
+                { name: "Carrot", type: "Vegetable", price: "$1.20", image: "https://i.ibb.co/3CJFgtf/66650460ca5fb60957eaacd492d63f18.jpg" },
+                { name: "Cabbage", type: "Vegetable", price: "$1.80", image: "https://i.ibb.co/Kh7PwPn/b12a532fa575f03b3be647bdf5ae0192.jpg" },
+                { name: "Spinach", type: "Vegetable", price: "$1.50", image: "https://i.ibb.co/Cz6S3Gn/onion.jpg" }
+            ],
+            "Green": [
+                { name: "mango", type: "Fruit", price: "$0.90", image: "https://i.ibb.co/64Rbcn7/mango.jpg" },
+                { name: "guava", type: "Fruit", price: "$2.50", image: "https://i.ibb.co/61Kd3fj/guava.jpg" },
+                { name: "Pears", type: "Fruit", price: "$3.00", image: "https://i.ibb.co/4RvdzNr/pears.jpg" }
+            ],
+            "Spices": [
+                { name: "coriander seeds", type: "Spice", price: "$0.70", image: "https://i.ibb.co/hgDSkbT/coriander-seeds.jpg" },
+                { name: "Fennel seeds", type: "Spice", price: "$0.80", image: "https://i.ibb.co/pjXV1xQ/fennel-seeds.jpg" },
+                { name: "Peppers", type: "Spice", price: "$0.60", image: "https://i.ibb.co/yssCJbc/pepper.jpg" }
+            ],
+            "Grains": [
+                { name: "wheat", type: "Grain", price: "$0.90", image: "https://i.ibb.co/QPjFrBs/wheat.webp" },
+                { name: "Foxtail", type: "Grain", price: "$1.50", image: "https://i.ibb.co/0GkRPjr/foxtail.jpg" },
+                { name: "rice", type: "Grain", price: "$1.20", image: "https://i.ibb.co/gyFg2MX/rice.jpg" }
+            ],
+            "Greens": [
+                { name: "Spinach", type: "Green", price: "$0.90", image: "https://i.ibb.co/rs4Hw64/spinach.jpg" },
+                { name: "Ponnanganni", type: "Green", price: "$1.50", image: "https://i.ibb.co/37dtLMq/ponnanganni.jpg" },
+                { name: "Vallarai", type: "Green", price: "$1.20", image: "https://i.ibb.co/w0kvF4w/Vallarai.jpg" }
+            ]
+        },
+        "mohanur market": {
+            "Vegetables": [
+                { name: "Carrot", type: "Vegetable", price: "$1.20", image: "https://i.ibb.co/3CJFgtf/66650460ca5fb60957eaacd492d63f18.jpg" },
+                { name: "Cabbage", type: "Vegetable", price: "$1.80", image: "https://i.ibb.co/Kh7PwPn/b12a532fa575f03b3be647bdf5ae0192.jpg" },
+                { name: "Spinach", type: "Vegetable", price: "$1.50", image: "https://i.ibb.co/Cz6S3Gn/onion.jpg" }
+            ],
+            "Green": [
+                { name: "mango", type: "Fruit", price: "$0.90", image: "https://i.ibb.co/64Rbcn7/mango.jpg" },
+                { name: "guava", type: "Fruit", price: "$2.50", image: "https://i.ibb.co/61Kd3fj/guava.jpg" },
+                { name: "Pears", type: "Fruit", price: "$3.00", image: "https://i.ibb.co/4RvdzNr/pears.jpg" }
+            ],
+            "Spices": [
+                { name: "coriander seeds", type: "Spice", price: "$0.70", image: "https://i.ibb.co/hgDSkbT/coriander-seeds.jpg" },
+                { name: "Fennel seeds", type: "Spice", price: "$0.80", image: "https://i.ibb.co/pjXV1xQ/fennel-seeds.jpg" },
+                { name: "Peppers", type: "Spice", price: "$0.60", image: "https://i.ibb.co/yssCJbc/pepper.jpg" }
+            ],
+            "Grains": [
+                { name: "wheat", type: "Grain", price: "$0.90", image: "https://i.ibb.co/QPjFrBs/wheat.webp" },
+                { name: "Foxtail", type: "Grain", price: "$1.50", image: "https://i.ibb.co/0GkRPjr/foxtail.jpg" },
+                { name: "rice", type: "Grain", price: "$1.20", image: "https://i.ibb.co/gyFg2MX/rice.jpg" }
+            ],
+            "Greens": [
+                { name: "Spinach", type: "Green", price: "$0.90", image: "https://i.ibb.co/rs4Hw64/spinach.jpg" },
+                { name: "Ponnanganni", type: "Green", price: "$1.50", image: "https://i.ibb.co/37dtLMq/ponnanganni.jpg" },
+                { name: "vallarai", type: "Green", price: "$1.20", image: "https://i.ibb.co/w0kvF4w/Vallarai.jpg" }
+            ]
+        },
+        "namakkal market": {
+            "Vegetables": [
+                { name: "Carrot", type: "Vegetable", price: "$1.20", image: "https://i.ibb.co/3CJFgtf/66650460ca5fb60957eaacd492d63f18.jpg" },
+                { name: "Cabbage", type: "Vegetable", price: "$1.80", image: "https://i.ibb.co/Kh7PwPn/b12a532fa575f03b3be647bdf5ae0192.jpg" },
+                { name: "Spinach", type: "Vegetable", price: "$1.50", image: "https://i.ibb.co/Cz6S3Gn/onion.jpg" }
+            ],
+            "Green": [
+                { name: "mango", type: "Fruit", price: "$0.90", image: "https://i.ibb.co/64Rbcn7/mango.jpg" },
+                { name: "guava", type: "Fruit", price: "$2.50", image: "https://i.ibb.co/61Kd3fj/guava.jpg" },
+                { name: "Pears", type: "Fruit", price: "$3.00", image: "https://i.ibb.co/4RvdzNr/pears.jpg" }
+            ],
+            "Spices": [
+                { name: "coriander seeds", type: "Spice", price: "$0.70", image: "https://i.ibb.co/hgDSkbT/coriander-seeds.jpg" },
+                { name: "Fennel seeds", type: "Spice", price: "$0.80", image: "https://i.ibb.co/pjXV1xQ/fennel-seeds.jpg" },
+                { name: "Peppers", type: "Spice", price: "$0.60", image: "https://i.ibb.co/yssCJbc/pepper.jpg" }
+            ],
+            "Grains": [
+                { name: "wheat", type: "Grain", price: "$0.90", image: "https://i.ibb.co/QPjFrBs/wheat.webp" },
+                { name: "Foxtail", type: "Grain", price: "$1.50", image: "https://i.ibb.co/0GkRPjr/foxtail.jpg" },
+                { name: "rice", type: "Grain", price: "$1.20", image: "https://i.ibb.co/gyFg2MX/rice.jpg" }
+            ],
+            "Greens": [
+                { name: "Spinach", type: "Green", price: "$0.90", image: "https://i.ibb.co/rs4Hw64/spinach.jpg" },
+                { name: "Ponnanganni", type: "Green", price: "$1.50", image: "https://i.ibb.co/37dtLMq/ponnanganni.jpg" },
+                { name: "vallarai", type: "Green", price: "$1.20", image: "https://i.ibb.co/w0kvF4w/Vallarai.jpg" }
+            ]
+        },
+        "thiruchengode market": {
+            "Vegetables": [
+                { name: "Carrot", type: "Vegetable", price: "$1.20", image: "https://i.ibb.co/3CJFgtf/66650460ca5fb60957eaacd492d63f18.jpg" },
+                { name: "Cabbage", type: "Vegetable", price: "$1.80", image: "https://i.ibb.co/Kh7PwPn/b12a532fa575f03b3be647bdf5ae0192.jpg" },
+                { name: "Spinach", type: "Vegetable", price: "$1.50", image: "https://i.ibb.co/Cz6S3Gn/onion.jpg" }
+            ],
+            "Green": [
+                { name: "mango", type: "Fruit", price: "$0.90", image: "https://i.ibb.co/64Rbcn7/mango.jpg" },
+                { name: "guava", type: "Fruit", price: "$2.50", image: "https://i.ibb.co/61Kd3fj/guava.jpg" },
+                { name: "Pears", type: "Fruit", price: "$3.00", image: "https://i.ibb.co/4RvdzNr/pears.jpg" }
+            ],
+            "Spices": [
+                { name: "coriander seeds", type: "Spice", price: "$0.70", image: "https://i.ibb.co/hgDSkbT/coriander-seeds.jpg" },
+                { name: "Fennel seeds", type: "Spice", price: "$0.80", image: "https://i.ibb.co/pjXV1xQ/fennel-seeds.jpg" },
+                { name: "Peppers", type: "Spice", price: "$0.60", image: "https://i.ibb.co/yssCJbc/pepper.jpg" }
+            ],
+            "Grains": [
+                { name: "wheat", type: "Grain", price: "$0.90", image: "https://i.ibb.co/QPjFrBs/wheat.webp" },
+                { name: "Foxtail", type: "Grain", price: "$1.50", image: "https://i.ibb.co/0GkRPjr/foxtail.jpg" },
+                { name: "rice", type: "Grain", price: "$1.20", image: "https://i.ibb.co/gyFg2MX/rice.jpg" }
+            ],
+            "Greens": [
+                { name: "Spinach", type: "Green", price: "$0.90", image: "https://i.ibb.co/rs4Hw64/spinach.jpg" },
+                { name: "Ponnanganni", type: "Green", price: "$1.50", image: "https://i.ibb.co/37dtLMq/ponnanganni.jpg" },
+                { name: "vallarai", type: "Green", price: "$1.20", image: "https://i.ibb.co/w0kvF4w/Vallarai.jpg" }
+            ]
+        },
+        "rasipuram market": {
+            "Vegetables": [
+                { name: "Carrot", type: "Vegetable", price: "$1.20", image: "https://i.ibb.co/3CJFgtf/66650460ca5fb60957eaacd492d63f18.jpg" },
+                { name: "Cabbage", type: "Vegetable", price: "$1.80", image: "https://i.ibb.co/Kh7PwPn/b12a532fa575f03b3be647bdf5ae0192.jpg" },
+                { name: "Spinach", type: "Vegetable", price: "$1.50", image: "https://i.ibb.co/Cz6S3Gn/onion.jpg" }
+            ],
+            "Green": [
+                { name: "mango", type: "Fruit", price: "$0.90", image: "https://i.ibb.co/64Rbcn7/mango.jpg" },
+                { name: "guava", type: "Fruit", price: "$2.50", image: "https://i.ibb.co/61Kd3fj/guava.jpg" },
+                { name: "Pears", type: "Fruit", price: "$3.00", image: "https://i.ibb.co/4RvdzNr/pears.jpg" }
+            ],
+            "Spices": [
+                { name: "coriander seeds", type: "Spice", price: "$0.70", image: "https://i.ibb.co/hgDSkbT/coriander-seeds.jpg" },
+                { name: "Fennel seeds", type: "Spice", price: "$0.80", image: "https://i.ibb.co/pjXV1xQ/fennel-seeds.jpg" },
+                { name: "Peppers", type: "Spice", price: "$0.60", image: "https://i.ibb.co/yssCJbc/pepper.jpg" }
+            ],
+            "Grains": [
+                { name: "wheat", type: "Grain", price: "$0.90", image: "https://i.ibb.co/QPjFrBs/wheat.webp" },
+                { name: "Foxtail", type: "Grain", price: "$1.50", image: "https://i.ibb.co/0GkRPjr/foxtail.jpg" },
+                { name: "rice", type: "Grain", price: "$1.20", image: "https://i.ibb.co/gyFg2MX/rice.jpg" }
+            ],
+            "Greens": [
+                { name: "Spinach", type: "Green", price: "$0.90", image: "https://i.ibb.co/rs4Hw64/spinach.jpg" },
+                { name: "Ponnanganni", type: "Green", price: "$1.50", image: "https://i.ibb.co/37dtLMq/ponnanganni.jpg" },
+                { name: "vallarai", type: "Green", price: "$1.20", image: "https://i.ibb.co/w0kvF4w/Vallarai.jpg" }
+            ]
+        },
+        "Kumarapalayam market": {
+            "Vegetables": [
+                { name: "Carrot", type: "Vegetable", price: "$1.20", image: "https://i.ibb.co/3CJFgtf/66650460ca5fb60957eaacd492d63f18.jpg" },
+                { name: "Cabbage", type: "Vegetable", price: "$1.80", image: "https://i.ibb.co/Kh7PwPn/b12a532fa575f03b3be647bdf5ae0192.jpg" },
+                { name: "Spinach", type: "Vegetable", price: "$1.50", image: "https://i.ibb.co/Cz6S3Gn/onion.jpg" }
+            ],
+            "Green": [
+                { name: "mango", type: "Fruit", price: "$0.90", image: "https://i.ibb.co/64Rbcn7/mango.jpg" },
+                { name: "guava", type: "Fruit", price: "$2.50", image: "https://i.ibb.co/61Kd3fj/guava.jpg" },
+                { name: "Pears", type: "Fruit", price: "$3.00", image: "https://i.ibb.co/4RvdzNr/pears.jpg" }
+            ],
+            "Spices": [
+                { name: "coriander seeds", type: "Spice", price: "$0.70", image: "https://i.ibb.co/hgDSkbT/coriander-seeds.jpg" },
+                { name: "Fennel seeds", type: "Spice", price: "$0.80", image: "https://i.ibb.co/pjXV1xQ/fennel-seeds.jpg" },
+                { name: "Peppers", type: "Spice", price: "$0.60", image: "https://i.ibb.co/yssCJbc/pepper.jpg" }
+            ],
+            "Grains": [
+                { name: "wheat", type: "Grain", price: "$0.90", image: "https://i.ibb.co/QPjFrBs/wheat.webp" },
+                { name: "Foxtail", type: "Grain", price: "$1.50", image: "https://i.ibb.co/0GkRPjr/foxtail.jpg" },
+                { name: "rice", type: "Grain", price: "$1.20", image: "https://i.ibb.co/gyFg2MX/rice.jpg" }
+            ],
+            "Greens": [
+                { name: "Spinach", type: "Green", price: "$0.90", image: "https://i.ibb.co/rs4Hw64/spinach.jpg" },
+                { name: "Ponnanganni", type: "Green", price: "$1.50", image: "https://i.ibb.co/37dtLMq/ponnanganni.jpg" },
+                { name: "vallarai", type: "Green", price: "$1.20", image: "https://i.ibb.co/w0kvF4w/Vallarai.jpg" }
+            ]
+        },
+        // Add more markets and their products here
+    };
+
+    function getMarketName() {
+        const params = new URLSearchParams(window.location.search);
+        return params.get('market');
+    }
+
+    function displayProducts(marketName) {
+        const productListDiv = document.getElementById('productList');
+        productListDiv.innerHTML = '';
+
+        if (products[marketName]) {
+            for (const category in products[marketName]) {
+                const categoryHeader = document.createElement('h4');
+                categoryHeader.classList.add('mt-4');
+                categoryHeader.innerText = category;
+                productListDiv.appendChild(categoryHeader);
+
+                // Create a row for products
+                const rowDiv = document.createElement('div');
+                rowDiv.classList.add('row');
+
+                products[marketName][category].forEach((product, index) => {
+                    // Create a new row after every three products
+                    if (index % 3 === 0 && index !== 0) {
+                        productListDiv.appendChild(rowDiv); // Append the previous row before stPonnanganniing a new one
+                        rowDiv.innerHTML = ''; // Reset the row for the next set of products
+                    }
+
+                    const productCard = document.createElement('div');
+                    productCard.classList.add('col-md-4', 'product-card'); // Set to 4 for 3 products per row
+                    productCard.innerHTML = `
+                        <div class="card">
+                            <img src="${product.image}" class="card-img-top" alt="${product.name}">
+                            <div class="card-body">
+                                <h5 class="card-title">${product.name}</h5>
+                                <p class="card-text"><strong>Type:</strong> ${product.type}</p>
+                                <p class="card-text"><strong>Price:</strong> ${product.price}</p>
+                            </div>
+                        </div>
+                    `;
+                    rowDiv.appendChild(productCard);
+                });
+
+                // Append the last row after finishing the loop
+                if (rowDiv.children.length > 0) {
+                    productListDiv.appendChild(rowDiv);
+                }
+            }
+        } else {
+            productListDiv.innerHTML = '<p class="text-danger">No products available for this market.</p>';
+        }
+    }
+
+    window.onload = function() {
+        const marketName = getMarketName();
+        displayProducts(marketName);
+    };
+</script>
+
+</body>
+</html>
